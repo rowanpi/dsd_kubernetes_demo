@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mysql
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - env:
+            - name: MYSQL_DATABASE
+              value: churchpeople
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+          image: mysql:5.7
+          name: mysql
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/lib/mysql_new
+              name: church-people-data
+      restartPolicy: Always
+      volumes:
+        - name: church-people-data
+          persistentVolumeClaim:
+            claimName: church-people-data
+status: {}

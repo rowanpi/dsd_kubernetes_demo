@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: church-auth
+  namespace: default
+  annotations:
+    cloud.google.com/load-balancer-type: Internal
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: church-auth

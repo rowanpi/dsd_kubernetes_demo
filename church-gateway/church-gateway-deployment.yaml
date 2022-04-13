@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: church-gateway
+  name: church-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: church-gateway
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: church-gateway
+    spec:
+      containers:
+        - env:
+            - name: AUTH_HOST
+              value: church-auth
+            - name: AUTH_PORT
+              value: "8080"
+            - name: CHURCH_SONGBOOK_HOST
+              value: sheet-merger
+            - name: CHURCH_SONGBOOK_PORT
+              value: "5000"
+            - name: CHURCH_TG_HOST
+              value: church-telegram-bot-bff
+            - name: CHURCH_TG_PORT
+              value: "5000"
+            - name: CHURCH_TG_BOT_HOST
+              value: church-telegram-bot
+            - name: CHURCH_TG_BOT_PORT
+              value: "5000"
+            - name: GATEWAY_PORT
+              value: "80"
+            - name: JAVA_OPTS
+              value: -XX:+UseSerialGC -Xss512k -XX:MaxRAM=72m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Djava.security.egd=file:/dev/./urandom
+            - name: MUSIC_TEAM_HOST
+              value: church-music-team
+            - name: MUSIC_TEAM_PORT
+              value: "8080"
+            - name: PEOPLE_HOST
+              value: church-people
+            - name: PEOPLE_PORT
+              value: "8080"
+            - name: SERVICES_HOST
+              value: church-services
+            - name: SERVICES_PORT
+              value: "8080"
+            - name: SHEET_HOST
+              value: mvsongs.co.za
+            - name: SHEET_PORT
+              value: "8000"
+            - name: SITE_HOST
+              value: church-people-frontend
+            - name: SITE_PORT
+              value: "81"
+            - name: SONG_HOST
+              value: church-songs
+            - name: SONG_PORT
+              value: "9000"
+          image: churchsource/church-gateway
+          name: church-gateway
+          ports:
+            - containerPort: 80
+      restartPolicy: Always
+status: {}
