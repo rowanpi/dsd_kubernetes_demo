@@ -48,7 +48,7 @@ As discussed in the demo session, helm is a kubernetes deployment tool. It can b
 - Run `kubectl get services` to see if the church-people-service has been created. 
 
 ### Use helm to spin up the church-people-frontend module
-- The first thing we have to do before spinning up the frontend container is to configure it to point to the gateway service on minikube as the backend. Previously we obtained the URL when setting up the tunnel. From that value take its IP (should be 127.0.0.1) and insert it in the `church-people-chart/values.yaml` file for the app.host config. Take the port and set it to the app.port value in the values.yaml file. 
+- The first thing you have to do before spinning up the frontend container is to configure it to point to the gateway service on minikube as the backend. Previously you obtained the URL when setting up the tunnel. From that value take its IP (should be 127.0.0.1) and insert it in the `church-people-chart/values.yaml` file for the app.host config. Take the port and set it to the app.port value in the values.yaml file. 
 - Then install the frontend. Run `helm upgrade --install church-people-frontend ./church-people-frontend-chart`
 - Run `kubectl get pods` to see if the church-people-frontend pod has been created (or busy creating at least)
 - Run `kubectl get services` to see if the church-people-frontend has been created. 
