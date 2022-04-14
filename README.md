@@ -55,4 +55,4 @@ As discussed in the demo session, helm is a kubernetes deployment tool. It can b
 
 ### Test the app
 - In your browser navigate to the url that was created by the `minikube service --url church-gateway-service` command. 
-- User name is `admin`, password is `password` Note, only the church people page will work since we have not spun up all the services. You can also add new auth users on the settings section. 
+- User name is `admin`, password is `password` Note, only the church people page will work since not all the services have been spun up. You can also add new auth users on the settings section. 
