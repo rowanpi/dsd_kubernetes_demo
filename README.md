@@ -6,6 +6,9 @@ While the demo demonstrated a number of different kubernetes features, such as d
 
 Note because you are running this locally on a minikube VM things will be much slower than was demo'd on a GCP cluster because of a few factors one being your slower internet connection etc etc. Image downloads thus take longer on initial POD creation.
 
+Below is a basic diagram showing the services that will be spun up. Only the section marked as DSD demo will be spun up. 
+
+![Service Overview](service_overview.png "Service Overview")
 ## Steps
 ### Install kubectl 
 - kubectl is the kubernetes command line tool that allows you to run commands against kubernetes clusters.
