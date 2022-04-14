@@ -2,7 +2,7 @@
 
 This repo houses some of the files that were used to demo kubernetes at a Deep South Devs Meetup in March 2022. 
 
-While the demo demonstrated a number of different kubernetes features, such as deployments of pods, cronjobs, services, hpa scaling etc and also helm, and that on a kubernetes cluster spun up on GCP, these files will bring up only a subset of the services and subset of k8s functionality demo'd. It will do so on a minikube VM. 
+While the demo demonstrated a number of different kubernetes features, such as deployments of pods, cronjobs, services, hpa scaling etc and also helm, and that on a kubernetes cluster spun up on GCP, these files will bring up only a subset of the services and show only subset of k8s functionality originally demo'd. It will do so on a minikube VM. 
 
 Note because of you are running this locally on a minikube VM things will be much slower than was demo'd on a GCP cluster because of a few factors one being your slower internet connection etc etc. Image downloads thus take longer on initial POD creation.
 
