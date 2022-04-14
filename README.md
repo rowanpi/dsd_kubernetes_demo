@@ -13,14 +13,14 @@ Note because you are running this locally on a minikube VM things will be much s
 
 
 ### Install Minikube
-- Minikube is a local kubernees that allows for easy learning and development on kubernetes. In our case it will be great since it runs on your local machine and costs nothing. To install, follow instructions listed [here](https://minikube.sigs.k8s.io/docs/start/)
+- Minikube is a local kubernetes that allows for easy learning and development on kubernetes. In our case it will be great since it runs on your local machine and costs nothing. To install, follow instructions listed [here](https://minikube.sigs.k8s.io/docs/start/)
 - start minikube if not started already. Run `minikube start` in the terminal
 - `minikube start` should point your kubectl to the minikube cluster. If you already using kubectl for other things like work, be careful and check that kubectl is pointing to the minikube cluster before continuing. 
 
 ### Use kubectl to spin up mysql
 - Run `kubectl apply -f mysql/data-persistentvolumeclaim.yaml` to create a persistent volume claim which will be used by the mysql pod
 - Run `kubectl apply -f mysql/mysql-deployment.yaml` to create a mysql pod. 
-- Run `kubectl apply -f mysql/mysql-service.yaml` to allow the myql pod to be reachable throughout the cluster (remember a cluster could have more than one node and the POD can be deployed to any node belonging to the cluster. Of course in minikube case there will only be 1, but this will definitely not be the case in reality).
+- Run `kubectl apply -f mysql/mysql-service.yaml` to allow the myql pod to be reachable throughout the cluster (remember a cluster could have more than one node and the pod can be deployed to any node belonging to the cluster. Of course in minikube case there will only be 1, but this will definitely not be the case in a real world scenario).
 - You can run `kubectl get pods` to see if the pod has started successfully. Similarly run `kubectl get services` and `kubectl get pvc` to check the services and private volume claim respectively.  Note that the POD may take quite long to spin up since it has to download the mysql image for the first time. 
 
 ### Use kubectl to spin up the church-auth module
