@@ -1,0 +1,8 @@
+apiVersion: v1
+name: church-people-frontend
+version: 1.0.0
+description: Church-people frontend
+keywords:
+  - church-people-frontend
+sources:
+  - https://github.com/church-source/church-people-frontend

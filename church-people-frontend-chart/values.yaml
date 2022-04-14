@@ -1,0 +1,14 @@
+image:
+  pullPolicy: Always
+  registry:
+    url: churchsource/cp-frontend
+  tag: latest
+
+strategy:
+  maxUnavailable: 0
+  maxSurge: 1
+
+app:
+  port: "60319"
+  host: "127.0.0.1" # replace with URL from the minikube tunnel created previously
+  protocol: "http"

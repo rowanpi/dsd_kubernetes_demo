@@ -1,10 +1,9 @@
 apiVersion: v1
 kind: Service
+{{ $chart := .Chart }}
 metadata:
-  name: church-people-frontend
+  name: {{ $chart.Name | quote }}
   namespace: default
-  annotations:
-    cloud.google.com/load-balancer-type: Internal
 spec:
   type: ClusterIP
   ports:
@@ -12,4 +11,4 @@ spec:
       protocol: TCP
       targetPort: 81
   selector:
-    app: church-people-frontend
+    app: {{ $chart.Name }}

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+{{ $chart := .Chart }}
+{{ $values := .Values }}
+metadata:
+  labels:
+    app: {{ $chart.Name | quote }}
+  name: {{ $chart.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ $chart.Name | quote }}
+  strategy:
+    rollingUpdate:
+      maxUnavailable: {{ $values.strategy.maxUnavailable }}
+      maxSurge: {{ $values.strategy.maxSurge }}
+  template:
+    metadata:
+      labels:
+        app: {{ $chart.Name | quote }}
+        date: "{{ now | unixEpoch }}"
+    spec:
+      restartPolicy: Always
+      containers:
+        - env:
+            - name: REACT_APP_API_PORT
+              value: {{ $values.app.port | quote }}
+            - name: REACT_APP_API_URL
+              value: {{ $values.app.host }}
+            - name: REACT_APP_API_PROTOCOL
+              value: {{ $values.app.protocol }}
+          image: "{{ $values.image.registry.url }}"
+          imagePullPolicy: "{{ $values.image.pullPolicy }}"
+          name: {{ $chart.Name }}
+status: {}

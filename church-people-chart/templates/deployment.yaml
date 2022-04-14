@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+{{ $chart := .Chart }}
+{{ $values := .Values }}
+metadata:
+  labels:
+    app: {{ $chart.Name | quote }}
+  name: {{ $chart.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ $chart.Name | quote }}
+  strategy:
+    rollingUpdate:
+      maxUnavailable: {{ $values.strategy.maxUnavailable }}
+      maxSurge: {{ $values.strategy.maxSurge }}
+  template:
+    metadata:
+      labels:
+        app: {{ $chart.Name | quote }}
+        date: "{{ now | unixEpoch }}"
+    spec:
+      restartPolicy: Always
+      containers:
+        - env:
+            - name: SERVER_PORT
+              value: {{ $values.server.port | quote }}
+            - name: JAVA_OPTS
+              value: -XX:+UseSerialGC -Xss512k -XX:MaxRAM=72m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Djava.security.egd=file:/dev/./urandom
+            - name: SPRING_DATABASE_HOST
+              value: {{ $values.database.host | quote }}
+            - name: SPRING_DATABASE_PORT
+              value: {{ $values.database.port | quote }}
+          image: "{{ $values.image.registry.url }}"
+          imagePullPolicy: "{{ $values.image.pullPolicy }}"
+          name: {{ $chart.Name }}
+status: {}

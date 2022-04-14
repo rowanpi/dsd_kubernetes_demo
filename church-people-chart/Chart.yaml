@@ -1,0 +1,8 @@
+apiVersion: v1
+name: church-people
+version: 1.0.0
+description: Manage people database
+keywords:
+  - church-people
+sources:
+  - https://github.com/church-source/church-people

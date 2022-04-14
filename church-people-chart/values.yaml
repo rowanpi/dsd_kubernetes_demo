@@ -1,0 +1,17 @@
+image:
+  pullPolicy: Always
+  registry:
+    url: churchsource/church-people
+  tag: latest
+
+strategy:
+  maxUnavailable: 0
+  maxSurge: 1
+
+server:
+  port: "8080"
+
+database:
+  host: "mysql"
+  port: "3306"
+
