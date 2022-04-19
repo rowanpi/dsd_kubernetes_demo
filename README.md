@@ -42,7 +42,7 @@ Below is a basic diagram showing the services that will be spun up. Only the sec
 `minikube service --url church-gateway-service`.
 
 ### Use helm to spin up the church-people module
-As discussed in the demo session, helm is a kubernetes deployment tool. It can be seen as a package manager for kubernetes. helm makes it easy for developers to provide a consistent way to install an application into the cluster through its concept called `charts`. Read more [here](https://helm.sh/)
+As discussed in the demo session, helm is a kubernetes deployment tool. It can be seen as a package manager for kubernetes. helm makes it easy for developers to provide a consistent way to install an application into the cluster through its concept called `charts`. Read more [here](https://helm.sh/). You can following [these](https://helm.sh/docs/intro/install/) instructions to install helm locally. Once installed:
 - Run `helm upgrade --install church-people ./church-people-chart`. Note already how easy it is to spin up both the pod deployment and the service.
 - Run `kubectl get pods` to see if the church-people pod has been created (or busy creating at least)
 - Run `kubectl get services` to see if the church-people-service has been created. 
